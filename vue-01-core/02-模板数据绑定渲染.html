@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{message}}</h3>
+        <p>{{number+200}}</p>
+        <span v-once>{{message}}</span>
+        <p>{{contentHtml}}</p>
+        <span v-html='contentHtml'></span>
+        <img v-bind:src="imgSrc">
+        <img :src="imgSrc">
+        <h3>{{num}}</h3>
+        <button @click='add'>点击加一</button>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hah',
+                number: 100,
+                contentHtml: '<span style="color:red">红色字体内容</span>',
+                imgSrc: 'https://www.baidu.com/img/bd_logo1.png?where=super',
+                num: 10
+            },
+            methods: {
+                add: function() {
+                    this.num++
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

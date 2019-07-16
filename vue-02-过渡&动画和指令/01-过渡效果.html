@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .trs1-enter-active,
+        .trs1-leave-active {
+            transition: opacity 1s;
+        }
+        
+        .trs1-enter,
+        .trs-leave-to {
+            opacity: 0;
+        }
+        
+        .trs2-enter-active,
+        .trs2-leave-active {
+            transition: all 5s;
+        }
+        
+        .trs2-enter,
+        .trs2-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app1">
+        <button @click="show = !show">渐变过渡</button>
+        <transition name='trs1'>
+            <p v-show='show'>渐变过渡</p>
+        </transition>
+
+    </div>
+    <div id="app2">
+        <button @click="show = !show">渐变平移过渡</button>
+        <transition name='trs2'>
+            <p v-show='show'>渐变平移过渡</p>
+        </transition>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm1 = new Vue({
+            el: '#app1',
+            data: {
+                show: true,
+            }
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                show: true,
+            }
+        })
+    </script>
+</body>
+
+</html>

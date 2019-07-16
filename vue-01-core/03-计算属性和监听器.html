@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        数学: <input type="text" v-model='mathSocre'> </br>
+        英语: <input type="text" v-model='englishScore'></br>
+        总分(单向绑定): <input type="text" v-model='sumSocre()'> </br>
+        总分(计算属性单向绑定): <input type="text" v-model='sumSocre1'></br>
+        总分(计算属性双向绑定): <input type="text" v-model='sumSocre2'></br>
+        总分(监听器):<input type="text" v-model='sumScore'>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                mathSocre: 90,
+                englishScore: 80,
+                sumScore: 0
+            },
+            methods: {
+                sumSocre: function() {
+                    console.log('sumSocre被调用')
+                    return (this.mathSocre - 0) + (this.englishScore - 0)
+                }
+            },
+            computed: {
+                sumSocre1: function() {
+                    console.log('sumSocre1被调用')
+                    return (this.mathSocre - 0) + (this.englishScore - 0)
+                },
+                sumSocre2: {
+                    get: function() {
+                        console.log('sumSocre2.get被调用')
+                        return (this.mathSocre - 0) + (this.englishScore - 0)
+                    },
+                    set: function(newValue) {
+                        console.log('sumSocre2.set被调用')
+                        var avgSocre = newValue / 2
+                        this.mathSocre = avgSocre
+                        this.englishScore = avgSocre
+                    }
+                }
+            },
+            watch: {
+                mathSocre: function(newValue) {
+                    this.sumScore = (newValue - 0) + (this.englishScore - 0)
+
+                }
+            },
+        })
+        vm.$watch('englishScore', function(newValue) {
+                this.sumScore = (newValue - 0) + (this.mathSocre - 0)
+            }),
+            vm.$watch('sumScore', function(newValue) {
+                var avgSocre = newValue / 2
+                this.mathSocre = avgSocre
+                this.englishScore = avgSocre
+            })
+    </script>
+</body>
+
+</html>

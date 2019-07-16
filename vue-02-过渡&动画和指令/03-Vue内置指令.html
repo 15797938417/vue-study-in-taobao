@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <span v-pre>{{this will not be compiled}}</span>
+        <h2>{{msg1}}</h2>
+        <h2 v-text='msg1'></h2>
+        <ul>
+            <li v-for='(e,index) in emps'>
+                {{index}}+{{e.name}}+{{e.salary}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in msg2">
+                第{{index}}个属性为:{{key}}={{value}}
+            </li>
+        </ul>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg1: '双大括号会闪烁',
+                msg2: {
+                    name: '马云',
+                    salary: '20000'
+                },
+                emps: [{
+                    name: '马云',
+                    salary: '20000'
+                }, {
+                    name: '马云',
+                    salary: '20000'
+                }, {
+                    name: '马云',
+                    salary: '20000'
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>
