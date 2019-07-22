@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义插件</title>
+</head>
+
+<body>
+    <div id="app">
+        <span v-my-directive='content'></span>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./js/plugins.js"></script>
+    <script>
+        Vue.use(MyPlugin)
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                content: 'hello'
+            }
+        })
+        Vue.myGlobalMethod()
+        vm.$myMethod('mengxuegu')
+    </script>
+</body>
+
+</html>

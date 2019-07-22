@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-main></app-main>
+        <app-footer></app-footer>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./component/Header.js"></script>
+    <script src="./component/Main.js"></script>
+    <script src="./component/Footer.js"></script>
+    <script>
+        Vue.component('component-a', {
+            template: '<div><h3>这是全局组件---{{msg}}</h3></div>',
+            data() {
+                return {
+                    msg: 'component-a'
+                }
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                'component-b': {
+                    template: '<div><h3>这是全局组件---{{msg}}</h3></div>',
+                    data() {
+                        return {
+                            msg: "component-b"
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
