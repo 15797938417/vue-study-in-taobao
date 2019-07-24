@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <h1>头部</h1>
+        </div>
+        <div class="left">
+            <p>
+                <ul>
+                    <li> <a href="#/foo">Go Foo</a> </li>
+                    <li> <a href="#/bar">Go Bar</a> </li>
+                    <li>
+                        <router-link to='/foo'>go to foo</router-link>
+                    </li>
+                    <li>
+                        <router-link to='/bar'>go to bar</router-link>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div class="main">
+            <router-view></router-view>
+        </div>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            router: new VueRouter({
+                //注意此处是routes而不是routers！！！！
+                routes: [{
+                    path: '/foo',
+                    component: {
+                        template: '<div>foo</div>'
+                    }
+                }, {
+                    path: '/bar',
+                    component: {
+                        template: '<div>bar</div>'
+                    }
+                }]
+            })
+        })
+    </script>
+</body>
+
+</html>
