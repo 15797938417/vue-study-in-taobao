@@ -6,6 +6,7 @@
             <ul v-for='tech in techArr' :key='tech.id'>
                 <li>
                     <span>{{tech.title}} </span>
+                    <router-link :to="'/news/tech/detail/'+tech.id" tag='button' active-class='btn  btn-default btn-xs' exact> 查看</router-link>
                     <button @click='pushTech(tech.id)' class="btn  btn-default btn-xs">查看(Push)</button>&nbsp;
                     <button @click='replaceTech(tech.id)' class="btn btn-default btn-xs">查看(replace)</button>
                 </li>
